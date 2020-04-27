@@ -1,0 +1,362 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.ThirdMainFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:background="#15AB92"
+        >
+
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/linear_month"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="本月"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                />
+
+            <View
+                android:id="@+id/view_month_bottom"
+                android:layout_marginTop="10dp"
+                android:layout_width="70dp"
+                android:layout_height="4dp"
+                android:background="#ffffff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="本年"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <View
+                android:id="@+id/view_year_bottom"
+                android:layout_width="70dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--<GridView-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:numColumns="2"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:id="@+id/grid_view"></GridView>-->
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/linear_chulizhong_2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/img_third_second"/>
+
+                        <TextView
+                            android:id="@+id/tv_hangding_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:text="--" />
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="处理中"
+                            android:textSize="15sp"
+                            android:layout_toRightOf="@id/tv_hangding_num"/>
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- -"
+                            android:textSize="20sp"
+                            android:layout_below="@id/tv_hangding_num"
+                            android:layout_marginTop="5dp"
+                            android:layout_centerHorizontal="true"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/linear_daiqueren_2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/img_third_third" />
+
+                        <TextView
+                            android:id="@+id/tv_to_confirm_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:text="--" />
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="待确认"
+                            android:textSize="15sp"
+                            android:layout_toRightOf="@id/tv_to_confirm_num"/>
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="- -"
+                            android:textSize="20sp"
+                            android:layout_below="@id/tv_to_confirm_num"
+                            android:layout_marginTop="5dp"
+                            android:layout_centerHorizontal="true"/>
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+
+                    <RelativeLayout
+                        android:id="@+id/linear_yiqueren_2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="25dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/img_third_forth"
+                            android:id="@+id/imageView" />
+
+                        <TextView
+                            android:id="@+id/tv_confirmed_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:text="--" />
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已确认"
+                            android:textSize="15sp"
+                            android:layout_toRightOf="@id/tv_confirmed_num"/>
+
+                        <TextView
+                            android:id="@+id/tv_confirmed_change"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="15sp"
+                            android:layout_below="@id/tv_confirmed_num"
+                            android:layout_marginTop="5dp"
+                            android:layout_centerHorizontal="true"/>
+
+                        <ImageView
+                            android:id="@+id/img_confirmed"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_toRightOf="@id/tv_confirmed_change"
+                            android:layout_below="@id/tv_confirmed_num"
+                            android:src="@drawable/img_increase"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/linear_wodegongdan"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+
+                    <RelativeLayout
+                        android:visibility="invisible"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/img_third_forth"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold"
+                            android:text="11" />
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已确认"
+                            android:textSize="15sp"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-2"
+                            android:textSize="15sp"
+                            android:layout_marginTop="5dp"
+                            android:layout_centerHorizontal="true"/>
+
+                        <ImageView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/img_increase"/>
+                    </RelativeLayout>
+
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_report"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="上报问题"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:background="@drawable/btn_round_coner_bg"
+                />
+
+
+
+            <RelativeLayout
+                android:id="@+id/layout_outcheck"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <xxy.com.gridleader.view.CircleView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="100px"
+                    android:layout_height="100px"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="外出\n巡查"
+                    android:textSize="20sp"
+                    android:textColor="#ffffff"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
