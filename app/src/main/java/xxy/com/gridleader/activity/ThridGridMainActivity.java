@@ -47,12 +47,6 @@ public class ThridGridMainActivity extends AppCompatActivity implements ThirdTab
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-//
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
     }

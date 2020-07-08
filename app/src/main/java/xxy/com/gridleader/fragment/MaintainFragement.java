@@ -265,6 +265,7 @@ public class MaintainFragement extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case SCREEN:
                 if (resultCode == RESULT_OK && data != null) {
@@ -275,6 +276,7 @@ public class MaintainFragement extends Fragment {
                     endTime = data.getStringExtra("endTime");
                     index = 0;
                     list.clear();
+                    adapter.notifyDataSetChanged();
                     lv.setPullLoadEnable(true);
                     MAINTAIN_CALL(userId,0,"",type,isSearch);
                 }
@@ -283,11 +285,11 @@ public class MaintainFragement extends Fragment {
             case DETAIL:
                 index = 0;
                 list.clear();
+                adapter.notifyDataSetChanged();
                 lv.setPullLoadEnable(true);
                 MAINTAIN_CALL(userId,0,"",type,isSearch);
                 break;
 
         }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }

@@ -1,6 +1,7 @@
 package xxy.com.gridleader.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,9 +28,8 @@ public class ImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_image);
 
 
-
         Intent intent = getIntent();
-        Long picId = intent.getLongExtra("pic",0);
+        Long picId = intent.getLongExtra("pic", 0);
 
         QUERYPRODETAIL_CALL(picId);
 
@@ -57,9 +57,14 @@ public class ImageActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     PicModel picModel = new Gson().fromJson(response.body(), PicModel.class);
                     ImageView img = findViewById(R.id.img);
-                    img.setImageBitmap(MyConstants.CONVERTSTRINGTOICON(picModel.getPic()));
+                    Bitmap bitmap = MyConstants.CONVERTSTRINGTOICON(picModel.getPic());
+                    if (bitmap != null) {
+                        img.setImageBitmap(bitmap);
+                    }
                 }
-            };
+            }
+            ;
+
             @Override
             public void onFailure(Call<String> call, Throwable t) {
 

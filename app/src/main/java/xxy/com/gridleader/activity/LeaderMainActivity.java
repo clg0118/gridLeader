@@ -21,7 +21,7 @@ public class LeaderMainActivity extends AppCompatActivity implements TabWidget.O
     private FragmentManager mFragmentManager;
     private LeaderMainFragment mainFragment;
     private String flag;
-    private int mIndex;
+    private int mIndex = 0;
     private FragmentTransaction transaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +40,6 @@ public class LeaderMainActivity extends AppCompatActivity implements TabWidget.O
     @Override
     protected void onResume() {
         super.onResume();
-        if (flag == null) {
-            onTabSelected(mIndex);
-            mTabWidget.setTabsDisplay(this, mIndex);
-            onTabSelected(mIndex);
-            mTabWidget.setTabsDisplay(this, mIndex);
-            System.out.println("_________flag==null_______________");
-        } else {
-            System.out.println("_________flag!=null_______________");
-            int result = Integer.valueOf(flag);
-            onTabSelected(result);
-            mTabWidget.setTabsDisplay(this, result);
-            onTabSelected(result);
-            mTabWidget.setTabsDisplay(this, result);
-            flag = null;
-        }
     }
 
     @Override

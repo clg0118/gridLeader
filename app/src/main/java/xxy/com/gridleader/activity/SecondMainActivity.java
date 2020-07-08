@@ -52,7 +52,6 @@ public class SecondMainActivity extends AppCompatActivity implements TabWidget.O
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     @Override
