@@ -6,8 +6,8 @@ android {
         applicationId "xxy.com.gridleader"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.0.5"
+        versionCode 4
+        versionName "1.0.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
