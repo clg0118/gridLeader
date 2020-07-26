@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class MyConstants {
 
-//    public static final String BASEURL = "http://112.4.75.18:80/grid_omw/";
-    public static final String BASEURL = "http://spxc.sipac.gov.cn:80/grid_omw/";
+    public static final String BASEURL = "http://112.4.75.18:80/grid_omw/";
+//    public static final String BASEURL = "http://spxc.sipac.gov.cn:80/grid_omw/";
 //    public static final String BASEURL = "http://192.168.18.206:8080/grid_omw/";
 
     public static final int MAIN_FRAGMENT_INDEX = 0;

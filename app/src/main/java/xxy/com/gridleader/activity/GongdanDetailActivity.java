@@ -19,6 +19,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -265,31 +267,41 @@ public class GongdanDetailActivity extends AppCompatActivity {
                     File file3 = null;
                     File file4 = null;
                     File file5 = null;
+
+                    HashMap<String, String> nameMap = new HashMap<>();
                     for (int i = 0; i < Bimp.tempSelectBitmap.size(); i++) {
 //                        alarmImgForAndroid[i] = Bitmap2StrByBase64(Bimp.tempSelectBitmap.get(i).getBitmap());
 //                        File file = new File(Bimp.tempSelectBitmap.get(i).getImagePath());
 //                        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                        String fileName = i+".PNG";
                         if (i == 0) {
-                            file1 = Bimp.tempSelectBitmap.get(0).getFile(fileName);
+                            String fileName1 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile1", fileName1);
+                            file1 = Bimp.tempSelectBitmap.get(0).getFile(fileName1);
 //                                file1 = MultipartBody.Part.createFormData("files", file.getName(), requestFile);
-
                         } else if (i == 1) {
 //                                file2 = new File(Bimp.tempSelectBitmap.get(1).getImagePath());
-                            file2 = Bimp.tempSelectBitmap.get(1).getFile(fileName);
+                            String fileName2 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile2", fileName2);
+                            file2 = Bimp.tempSelectBitmap.get(1).getFile(fileName2);
 //                                file2 = MultipartBody.Part.createFormData("files", file.getName(), requestFile);
 
                         } else if (i == 2) {
-                            file3 = Bimp.tempSelectBitmap.get(2).getFile(fileName);
+                            String fileName3 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile3", fileName3);
+                            file3 = Bimp.tempSelectBitmap.get(2).getFile(fileName3);
 
                         } else if (i == 3) {
-                            file4 = Bimp.tempSelectBitmap.get(3).getFile(fileName);
+                            String fileName4 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile4", fileName4);
+                            file4 = Bimp.tempSelectBitmap.get(3).getFile(fileName4);
 
                         } else if (i == 4) {
-                            file5 = Bimp.tempSelectBitmap.get(4).getFile(fileName);
+                            String fileName5 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile5", fileName5);
+                            file5 = Bimp.tempSelectBitmap.get(4).getFile(fileName5);
                         }
                     }
-                    MAINTAIN_DEAL(userId,id,et_content.getText().toString().trim(),file1,file2,file3,file4,file5);
+                    MAINTAIN_DEAL(userId,id,et_content.getText().toString().trim(),file1,file2,file3,file4,file5,nameMap);
                     Bimp.tempSelectBitmap.clear();
                 }else if (flag == 1){
                     MAINTAIN_BACK(userId,id,et_content.getText().toString().trim());
@@ -569,7 +581,7 @@ public class GongdanDetailActivity extends AppCompatActivity {
     }
 
     private void MAINTAIN_DEAL(long userId,long id,String mark,File file1, File file2, File file3,
-                               File file4, File file5){
+                               File file4, File file5,HashMap<String,String> nameMap){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(MyConstants.BASEURL)
                 .client(ApiStrategy.getApiService())
@@ -580,30 +592,40 @@ public class GongdanDetailActivity extends AppCompatActivity {
                 .addFormDataPart("actUserId", userId + "")
                 .addFormDataPart("id", id + "")
                 .addFormDataPart("dealContent", mark);
-        if (file1 != null) {
-            builder.addFormDataPart("uploadFile1",
-                    file1.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file1));
+        if (file1 != null && !TextUtils.isEmpty(nameMap.get("uploadFile1"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile1"), file1.getName())) {
+                builder.addFormDataPart("uploadFile1",
+                        file1.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file1));
+            }
         }
-        if (file2 != null) {
-            builder.addFormDataPart("uploadFile2",
-                    file2.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file2));
+        if (file2 != null && !TextUtils.isEmpty(nameMap.get("uploadFile2"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile2"), file2.getName())) {
+                builder.addFormDataPart("uploadFile2",
+                        file2.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file2));
+            }
         }
-        if (file3 != null) {
-            builder.addFormDataPart("uploadFile3",
-                    file3.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file3));
+        if (file3 != null && !TextUtils.isEmpty(nameMap.get("uploadFile3"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile3"), file3.getName())) {
+                builder.addFormDataPart("uploadFile3",
+                        file3.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file3));
+            }
         }
-        if (file4 != null) {
-            builder.addFormDataPart("uploadFile4",
-                    file4.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file4));
+        if (file4 != null && !TextUtils.isEmpty(nameMap.get("uploadFile4"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile4"), file4.getName())) {
+                builder.addFormDataPart("uploadFile4",
+                        file4.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file4));
+            }
         }
-        if (file5 != null) {
-            builder.addFormDataPart("uploadFile5",
-                    file5.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file5));
+        if (file5 != null && !TextUtils.isEmpty(nameMap.get("uploadFile5"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile5"), file5.getName())) {
+                builder.addFormDataPart("uploadFile5",
+                        file5.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file5));
+            }
         }
         RequestBody requestBody = builder.build();
 

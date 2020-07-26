@@ -25,6 +25,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -55,6 +56,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -202,31 +204,40 @@ public class PictureActivity extends AppCompatActivity {
                         File file4 = null;
                         File file5 = null;
 //                            MultipartBody.Part body =
+                        HashMap<String, String> nameMap = new HashMap<>();
                         for (int i = 0; i < Bimp.tempSelectBitmap.size(); i++) {
 //                            alarmImgForAndroid[i] = Bitmap2StrByBase64(Bimp.tempSelectBitmap.get(i).getBitmap());
 //                            File file = new File(Bimp.tempSelectBitmap.get(i).getImagePath());
 //                            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                            String fileName = i+".PNG";
                             if (i == 0) {
-                                file1 = Bimp.tempSelectBitmap.get(0).getFile(fileName);
+                                String fileName1 = System.currentTimeMillis() + ".PNG";
+                                nameMap.put("uploadFile1", fileName1);
+                                file1 = Bimp.tempSelectBitmap.get(0).getFile(fileName1);
 //                                file1 = MultipartBody.Part.createFormData("files", file.getName(), requestFile);
-
                             } else if (i == 1) {
 //                                file2 = new File(Bimp.tempSelectBitmap.get(1).getImagePath());
-                                file2 = Bimp.tempSelectBitmap.get(1).getFile(fileName);
+                                String fileName2 = System.currentTimeMillis() + ".PNG";
+                                nameMap.put("uploadFile2", fileName2);
+                                file2 = Bimp.tempSelectBitmap.get(1).getFile(fileName2);
 //                                file2 = MultipartBody.Part.createFormData("files", file.getName(), requestFile);
 
                             } else if (i == 2) {
-                                file3 = Bimp.tempSelectBitmap.get(2).getFile(fileName);
+                                String fileName3 = System.currentTimeMillis() + ".PNG";
+                                nameMap.put("uploadFile3", fileName3);
+                                file3 = Bimp.tempSelectBitmap.get(2).getFile(fileName3);
 
                             } else if (i == 3) {
-                                file4 = Bimp.tempSelectBitmap.get(3).getFile(fileName);
+                                String fileName4 = System.currentTimeMillis() + ".PNG";
+                                nameMap.put("uploadFile4", fileName4);
+                                file4 = Bimp.tempSelectBitmap.get(3).getFile(fileName4);
 
                             } else if (i == 4) {
-                                file5 = Bimp.tempSelectBitmap.get(4).getFile(fileName);
+                                String fileName5 = System.currentTimeMillis() + ".PNG";
+                                nameMap.put("uploadFile5", fileName5);
+                                file5 = Bimp.tempSelectBitmap.get(4).getFile(fileName5);
                             }
                         }
-                        DOADDALARM_CALL(userId, areaId, suggestion.getText().toString().trim(), tv_text_place.getText().toString(), categoryIdList.get(grid_view_minitype.getSelectedItemPosition()), longitude, latitude, file1, file2, file3, file4, file5);
+                        DOADDALARM_CALL(userId, areaId, suggestion.getText().toString().trim(), tv_text_place.getText().toString(), categoryIdList.get(grid_view_minitype.getSelectedItemPosition()), longitude, latitude, file1, file2, file3, file4, file5,nameMap);
 
 //                        DOADDALARM_CALL(userId, areaId, suggestion.getText().toString().trim(), "12345", categoryIdList.get(grid_view_minitype.getSelectedItemPosition()), longitude, latitude, file1, file2, file3, file4, file5);
                         Bimp.tempSelectBitmap.clear();
@@ -257,31 +268,40 @@ public class PictureActivity extends AppCompatActivity {
                     File file4 = null;
                     File file5 = null;
 
+                    HashMap<String, String> nameMap = new HashMap<>();
                     for (int i = 0; i < Bimp.tempSelectBitmap.size(); i++) {
-                        //                        alarmImgForAndroid[i] = Bitmap2StrByBase64(Bimp.tempSelectBitmap.get(i).getBitmap());
-//                        File file = new File(Bimp.tempSelectBitmap.get(i).getImagePath());
-//                        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                        String fileName = i+".PNG";
+//                            alarmImgForAndroid[i] = Bitmap2StrByBase64(Bimp.tempSelectBitmap.get(i).getBitmap());
+//                            File file = new File(Bimp.tempSelectBitmap.get(i).getImagePath());
+//                            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
                         if (i == 0) {
-                            file1 = Bimp.tempSelectBitmap.get(0).getFile(fileName);
+                            String fileName1 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile1", fileName1);
+                            file1 = Bimp.tempSelectBitmap.get(0).getFile(fileName1);
 //                                file1 = MultipartBody.Part.createFormData("files", file.getName(), requestFile);
-
                         } else if (i == 1) {
 //                                file2 = new File(Bimp.tempSelectBitmap.get(1).getImagePath());
-                            file2 = Bimp.tempSelectBitmap.get(1).getFile(fileName);
+                            String fileName2 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile2", fileName2);
+                            file2 = Bimp.tempSelectBitmap.get(1).getFile(fileName2);
 //                                file2 = MultipartBody.Part.createFormData("files", file.getName(), requestFile);
 
                         } else if (i == 2) {
-                            file3 = Bimp.tempSelectBitmap.get(2).getFile(fileName);
+                            String fileName3 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile3", fileName3);
+                            file3 = Bimp.tempSelectBitmap.get(2).getFile(fileName3);
 
                         } else if (i == 3) {
-                            file4 = Bimp.tempSelectBitmap.get(3).getFile(fileName);
+                            String fileName4 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile4", fileName4);
+                            file4 = Bimp.tempSelectBitmap.get(3).getFile(fileName4);
 
                         } else if (i == 4) {
-                            file5 = Bimp.tempSelectBitmap.get(4).getFile(fileName);
+                            String fileName5 = System.currentTimeMillis() + ".PNG";
+                            nameMap.put("uploadFile5", fileName5);
+                            file5 = Bimp.tempSelectBitmap.get(4).getFile(fileName5);
                         }
                     }
-                    CONFIRM_CALL(userId, Long.valueOf(alarmId), completed, et_content.getText().toString().trim(),file1,file2,file3,file4,file5);
+                    CONFIRM_CALL(userId, Long.valueOf(alarmId), completed, et_content.getText().toString().trim(), file1, file2, file3, file4, file5,  nameMap);
                     Bimp.tempSelectBitmap.clear();
                 }
             });
@@ -692,7 +712,7 @@ public class PictureActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(PictureActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE}, 888);
                 } else {
                     Intent intent = new Intent(PictureActivity.this, MapViewActivity.class);
-                    startActivityForResult(intent,TAKE_LOCATION);
+                    startActivityForResult(intent, TAKE_LOCATION);
                 }
 
             }
@@ -742,8 +762,6 @@ public class PictureActivity extends AppCompatActivity {
 
         });
     }
-
-
 
 
     @SuppressLint("HandlerLeak")
@@ -927,7 +945,7 @@ public class PictureActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case TAKE_LOCATION:
-                if (data != null && resultCode == RESULT_OK){
+                if (data != null && resultCode == RESULT_OK) {
                     if (data.getStringExtra("location") != null) {
                         String location = data.getStringExtra("location");
                         tv_choose_place.setText(location);
@@ -1005,7 +1023,7 @@ public class PictureActivity extends AppCompatActivity {
     private void DOADDALARM_CALL(long userId, long monitorPointId, String addContent,
                                  String addLocation, long addCategoryId, double longitude,
                                  double latitude, File file1, File file2, File file3,
-                                 File file4, File file5) {
+                                 File file4, File file5,HashMap<String,String> nameMap) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(MyConstants.BASEURL)
                 .client(ApiStrategy.getApiService())
@@ -1022,30 +1040,40 @@ public class PictureActivity extends AppCompatActivity {
                 .addFormDataPart("addCategoryId", addCategoryId + "")
                 .addFormDataPart("longitude", longitude + "")
                 .addFormDataPart("latitude", latitude + "");
-        if (file1 != null) {
-            builder.addFormDataPart("uploadFile1",
-                    file1.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file1));
+        if (file1 != null && !TextUtils.isEmpty(nameMap.get("uploadFile1"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile1"), file1.getName())) {
+                builder.addFormDataPart("uploadFile1",
+                        file1.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file1));
+            }
         }
-        if (file2 != null) {
-            builder.addFormDataPart("uploadFile2",
-                    file2.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file2));
+        if (file2 != null && !TextUtils.isEmpty(nameMap.get("uploadFile2"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile2"), file2.getName())) {
+                builder.addFormDataPart("uploadFile2",
+                        file2.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file2));
+            }
         }
-        if (file3 != null) {
-            builder.addFormDataPart("uploadFile3",
-                    file3.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file3));
+        if (file3 != null && !TextUtils.isEmpty(nameMap.get("uploadFile3"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile3"), file3.getName())) {
+                builder.addFormDataPart("uploadFile3",
+                        file3.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file3));
+            }
         }
-        if (file4 != null) {
-            builder.addFormDataPart("uploadFile4",
-                    file4.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file4));
+        if (file4 != null && !TextUtils.isEmpty(nameMap.get("uploadFile4"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile4"), file4.getName())) {
+                builder.addFormDataPart("uploadFile4",
+                        file4.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file4));
+            }
         }
-        if (file5 != null) {
-            builder.addFormDataPart("uploadFile5",
-                    file5.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file5));
+        if (file5 != null && !TextUtils.isEmpty(nameMap.get("uploadFile5"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile5"), file5.getName())) {
+                builder.addFormDataPart("uploadFile5",
+                        file5.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file5));
+            }
         }
         RequestBody requestBody = builder.build();
         Call<String> call = request.DOADDALARM_CALL1(requestBody);
@@ -1540,8 +1568,8 @@ public class PictureActivity extends AppCompatActivity {
         });
     }
 
-    private void CONFIRM_CALL(long userId, long alarmId, int confirmResult, String confirmContent,File file1, File file2, File file3,
-                              File file4, File file5) {
+    private void CONFIRM_CALL(long userId, long alarmId, int confirmResult, String confirmContent, File file1, File file2, File file3,
+                              File file4, File file5, HashMap<String, String> nameMap) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(MyConstants.BASEURL)
                 .client(ApiStrategy.getApiService())
@@ -1554,30 +1582,40 @@ public class PictureActivity extends AppCompatActivity {
                 .addFormDataPart("alarmId", alarmId + "")
                 .addFormDataPart("confirmResult", confirmResult + "")
                 .addFormDataPart("confirmContent", confirmContent);
-        if (file1 != null) {
-            builder.addFormDataPart("uploadFile1",
-                    file1.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file1));
+        if (file1 != null && !TextUtils.isEmpty(nameMap.get("uploadFile1"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile1"), file1.getName())) {
+                builder.addFormDataPart("uploadFile1",
+                        file1.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file1));
+            }
         }
-        if (file2 != null) {
-            builder.addFormDataPart("uploadFile2",
-                    file2.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file2));
+        if (file2 != null && !TextUtils.isEmpty(nameMap.get("uploadFile2"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile2"), file2.getName())) {
+                builder.addFormDataPart("uploadFile2",
+                        file2.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file2));
+            }
         }
-        if (file3 != null) {
-            builder.addFormDataPart("uploadFile3",
-                    file3.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file3));
+        if (file3 != null && !TextUtils.isEmpty(nameMap.get("uploadFile3"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile3"), file3.getName())) {
+                builder.addFormDataPart("uploadFile3",
+                        file3.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file3));
+            }
         }
-        if (file4 != null) {
-            builder.addFormDataPart("uploadFile4",
-                    file4.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file4));
+        if (file4 != null && !TextUtils.isEmpty(nameMap.get("uploadFile4"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile4"), file4.getName())) {
+                builder.addFormDataPart("uploadFile4",
+                        file4.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file4));
+            }
         }
-        if (file5 != null) {
-            builder.addFormDataPart("uploadFile5",
-                    file5.getName(),
-                    RequestBody.create(MediaType.parse("image/png"), file5));
+        if (file5 != null && !TextUtils.isEmpty(nameMap.get("uploadFile5"))) {
+            if (TextUtils.equals(nameMap.get("uploadFile5"), file5.getName())) {
+                builder.addFormDataPart("uploadFile5",
+                        file5.getName(),
+                        RequestBody.create(MediaType.parse("image/png"), file5));
+            }
         }
         RequestBody requestBody = builder.build();
 
