@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
@@ -18,8 +19,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -592,40 +591,40 @@ public class GongdanDetailActivity extends AppCompatActivity {
                 .addFormDataPart("actUserId", userId + "")
                 .addFormDataPart("id", id + "")
                 .addFormDataPart("dealContent", mark);
-        if (file1 != null && !TextUtils.isEmpty(nameMap.get("uploadFile1"))) {
-            if (TextUtils.equals(nameMap.get("uploadFile1"), file1.getName())) {
+        if (file1 != null) {
+//            if (TextUtils.equals(nameMap.get("uploadFile1"), file1.getName())) {
                 builder.addFormDataPart("uploadFile1",
                         file1.getName(),
                         RequestBody.create(MediaType.parse("image/png"), file1));
-            }
+//            }
         }
-        if (file2 != null && !TextUtils.isEmpty(nameMap.get("uploadFile2"))) {
-            if (TextUtils.equals(nameMap.get("uploadFile2"), file2.getName())) {
+        if (file2 != null) {
+//            if (TextUtils.equals(nameMap.get("uploadFile2"), file2.getName())) {
                 builder.addFormDataPart("uploadFile2",
                         file2.getName(),
                         RequestBody.create(MediaType.parse("image/png"), file2));
-            }
+//            }
         }
-        if (file3 != null && !TextUtils.isEmpty(nameMap.get("uploadFile3"))) {
-            if (TextUtils.equals(nameMap.get("uploadFile3"), file3.getName())) {
+        if (file3 != null) {
+//            if (TextUtils.equals(nameMap.get("uploadFile3"), file3.getName())) {
                 builder.addFormDataPart("uploadFile3",
                         file3.getName(),
                         RequestBody.create(MediaType.parse("image/png"), file3));
-            }
+//            }
         }
-        if (file4 != null && !TextUtils.isEmpty(nameMap.get("uploadFile4"))) {
-            if (TextUtils.equals(nameMap.get("uploadFile4"), file4.getName())) {
+        if (file4 != null) {
+//            if (TextUtils.equals(nameMap.get("uploadFile4"), file4.getName())) {
                 builder.addFormDataPart("uploadFile4",
                         file4.getName(),
                         RequestBody.create(MediaType.parse("image/png"), file4));
-            }
+//            }
         }
-        if (file5 != null && !TextUtils.isEmpty(nameMap.get("uploadFile5"))) {
-            if (TextUtils.equals(nameMap.get("uploadFile5"), file5.getName())) {
+        if (file5 != null) {
+//            if (TextUtils.equals(nameMap.get("uploadFile5"), file5.getName())) {
                 builder.addFormDataPart("uploadFile5",
                         file5.getName(),
                         RequestBody.create(MediaType.parse("image/png"), file5));
-            }
+//            }
         }
         RequestBody requestBody = builder.build();
 

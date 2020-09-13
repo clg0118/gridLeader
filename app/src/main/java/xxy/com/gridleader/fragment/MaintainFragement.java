@@ -210,6 +210,7 @@ public class MaintainFragement extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 isSearch = false;
                 list.clear();
+                index = 0;
                 type = typeList.get(maintain_typelist.getSelectedItemPosition());
                 MAINTAIN_CALL(userId,0,"",typeList.get(maintain_typelist.getSelectedItemPosition()),isSearch);
             }
@@ -224,6 +225,7 @@ public class MaintainFragement extends Fragment {
 
 
     private void MAINTAIN_CALL(final long userId, int status,String content,int type,boolean isSearch){
+        lv.setPullLoadEnable(true);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(MyConstants.BASEURL)
                 .addConverterFactory(ScalarsConverterFactory.create())
